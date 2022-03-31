@@ -108,7 +108,7 @@ class PianoServiceTest {
         // then
         assertThatThrownBy(() -> underTest.deletePiano(piano))
                 .isInstanceOf(PianoNotFoundException.class)
-                .hasMessageContaining("Il lavoro in piano con data " + piano.getCodiceLavoro() + " non esiste!");
+                .hasMessageContaining("Il lavoro in piano del: " + piano.getCodiceLavoro() + " non è stato trovato!");
 
         // Verifica che il save di pianoRepository non viene mai chiamato
         verify(pianoRepository, never()).deleteByCodiceLavoro(any());

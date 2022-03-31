@@ -30,8 +30,7 @@ public class PianoService { // Con shift command T creo un test
     public void deletePiano (Piano piano) {
         Timestamp codiceLavoro = piano.getCodiceLavoro();
         if(!pianoRepository.selectExistPiano(codiceLavoro)) {
-            throw new PianoNotFoundException(
-                    "Il lavoro in piano del: " + codiceLavoro + " non è stato trovato!");
+            throw new PianoNotFoundException(piano);
         }
         pianoRepository.deleteByCodiceLavoro(codiceLavoro);
     }
