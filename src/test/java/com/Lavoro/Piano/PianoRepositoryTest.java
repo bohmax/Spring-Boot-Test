@@ -88,10 +88,13 @@ public class PianoRepositoryTest {
         // given
         Piano pianoDaSalvare1 = getSavablePiano();
         Piano pianoDaSalvare2 = getSavablePiano();
+        Piano pianoDaSalvare3 = getSavablePiano();
         pianoUtility.addTimestamp(pianoDaSalvare2, 1);
+        pianoUtility.addTimestamp(pianoDaSalvare3, 2);
         pianoDaSalvare2.setFase(new Concluso());
         underTest.save(pianoDaSalvare1);
         underTest.save(pianoDaSalvare2);
+        underTest.save(pianoDaSalvare3);
         // when
         List<Piano> piani = underTest.findNotComplitedPiani();
         Boolean expected = piani.stream().noneMatch(element -> element.getFase().getStato().equals(Fasi.Concluso));
